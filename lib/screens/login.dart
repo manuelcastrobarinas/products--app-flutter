@@ -20,7 +20,7 @@ class LoginPage extends StatelessWidget {
               CardComponent(contenido: Column(children: [
                 const SizedBox(height: 10),
                 Text('login', style: Theme.of(context).textTheme.headline4),
-                const SizedBox(height: 30),
+                const SizedBox(height: 30),  
                 
                 ChangeNotifierProvider(
                   create: (_) => FormProvider(),
@@ -43,9 +43,8 @@ class _Form extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-
     final loginForm = Provider.of<FormProvider>(context);
-
+    
     return Form(
       key: loginForm.formKey,
       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -93,7 +92,7 @@ class _Form extends StatelessWidget {
             loginForm.isLoading = true;
             await Future.delayed(const Duration(seconds: 2));
             loginForm.isLoading = false;
-            Navigator.pushReplacementNamed(context, 'home');
+            Navigator.pushReplacementNamed(context, 'products');
           },
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 80,vertical: 15),

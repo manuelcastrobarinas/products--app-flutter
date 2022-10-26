@@ -1,6 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:login/provider/products/create/switch-section.dart';
+import 'package:login/provider/products/create/tag-selector.dart';
 import 'package:login/routes/routes.dart';
-void main() => runApp(const MyApp());
+import 'package:provider/provider.dart';
+void main() => runApp(const AppProviderState());
+
+class AppProviderState extends StatelessWidget {
+  const AppProviderState({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => SwitchSectionProvider(), lazy: false),
+        ChangeNotifierProvider(create: (_) => TagSelectorProvider(), lazy: false),
+      ],
+      child: const MyApp(),
+    );
+  }
+}
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -10,9 +29,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner : false,
       routes : routes,
-      initialRoute : 'login',
+      initialRoute : 'products',
       theme : ThemeData.light().copyWith(
-        scaffoldBackgroundColor: Colors.grey[300],
+        scaffoldBackgroundColor: Colors.grey[50],
       ),
     );
   }
